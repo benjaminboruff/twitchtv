@@ -1,0 +1,80 @@
+body {
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+#app {
+    margin: 0 auto;
+}
+
+#top-card {
+    margin-top: 30px;
+    margin-left: auto;
+    background-color: #26A69A;
+}
+
+#top-card h3 {
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+    color: white;
+}
+
+.users {
+    margin-bottom: 4px;
+}
+
+.offline {
+    background-color: #F44336;
+    margin-left: auto;
+}
+
+.online {
+    background-color: #4CAF50;
+    margin-left: auto;
+}
+
+#user-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+}
+
+.mdl-chip__text {
+    color: white;
+}
+
+.wide-card {
+    width: 450px;
+    margin-left: auto;
+}
+
+.user-link {
+    margin-left: auto;
+}
+
+.twitch-stream-card.mdl-card {
+    width: 450px;
+    height: 150px;
+}
+
+.twitch-stream-card > .mdl-card__title {
+    align-items: flex-start;
+}
+
+.twitch-stream-card > .mdl-card__actions {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+}

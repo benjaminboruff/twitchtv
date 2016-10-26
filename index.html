@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> FreeCodeCamp TwitchTV Project </title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:900" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.red-indigo.min.css">
+        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+        <script
+          src="https://code.jquery.com/jquery-3.1.1.min.js"
+          integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+          crossorigin="anonymous">
+        </script>
+        <script type="text/javascript" src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css" type="text/css" />
+    </head>
+    <body>
+        <div class="mdl-layout mdl-js-layout">
+            <div id="app">
+                <div id="top-card" class="twitch-stream-card mdl-card mdl-shadow--4dp">
+                    <div class="mdl-card__title">
+                        <h3>Streaming Twitch Users</h3>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <button @click="loadAll()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">All</button>
+                        <button @click="loadOnline()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Online</button>
+                        <button @click="loadOffline()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Offline</button>
+                    </div>
+                </div>
+                <ul>
+                    <li v-for="user in viewData" class="twitch-stream-card mdl-card mdl-shadow--4dp users">
+                        <template v-if="user.stream === 'offline'"><!-- Offline template -->
+                            <div class="mdl-card__title short">
+                                <a :href="user.url" target="_blank">
+                                    <p class="mdl-card__title-text">{{user.name}}</p>
+                                </a>
+                                <div class="mdl-chip offline">
+                                    <span class="mdl-chip__text"><strong>offline</strong></span>
+                                </div>
+                            </div>
+                        </template>
+                        <template v-else><!-- Online template -->
+                            <div class="mdl-card__title">
+                                <img id="user-icon" :src="user.img"></img>
+                                <a :href="user.url" target="_blank" class="user-link">
+                                    <p class="mdl-card__title-text">{{user.name}}</p>
+                                </a>
+                                <a :href="user.url" class="mdl-chip online" target="_blank">
+                                    <span class="mdl-chip__text"><strong>online</strong></span>
+                                </a>
+                            </div>
+                        </template>
+                        <!-- stream-name if online -->
+                        <div class="mdl-card__supporting-text" v-if="user.stream !== 'offline'">{{user.stream.channel.status}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript" src="app.js"></script>
+    </body>
+</html>
